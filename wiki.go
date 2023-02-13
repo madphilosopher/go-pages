@@ -111,7 +111,7 @@ func wikiHandler(w http.ResponseWriter, r *http.Request) {
 	node := &Node{
 		File:     r.URL.Path[1:] + ".md",
 		Path:     r.URL.Path,
-		Title:    title,
+		Title:    r.URL.Path[1:] + " – " + title,
 		Basepath: strings.TrimSuffix(basepath, "/"), // we do not want basepath to end with a /
 	}
 	node.Revisions = parseBool(r.FormValue("revisions"))
