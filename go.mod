@@ -1,5 +1,5 @@
-module github.com/rain-1/go-pages
+module github.com/madphilosopher/go-pages
 
-go 1.16
+go 1.19
 
 require github.com/yuin/goldmark v1.4.2

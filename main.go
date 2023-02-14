@@ -6,6 +6,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -19,13 +20,16 @@ var (
 	directory = "files"
 	templates = "templates"
 	static    = "static"
-	address   = ":8080"
-	title     = "gopages"
+	address   = ":8000"
+	title     = "go-pages"
 	basepath  = "/"
+	CommitID  string // populated by go build -X flags
+	BuildTime string // populated by go build -X flags
 )
 
 func main() {
 	// Define command line flags and parse them
+	flagVersion := flag.Bool("version", false, "current build information")
 	flagDirectory := flag.String("dir", directory, "directory where the markdown files are stored")
 	flagTemplates := flag.String("templates", templates, "directory where the templates are stored")
 	flagStatic := flag.String("static", static, "directory where the static files are stored")
@@ -41,6 +45,11 @@ func main() {
 	address = *flagAddress
 	title = *flagTitle
 	basepath = *flagBasepath
+
+	if *flagVersion {
+		fmt.Printf("go-pages version DEVEL.%s (commit-id=%s)\n", BuildTime, CommitID)
+		os.Exit(2)
+	}
 
 	// Check if wiki data directory exists
 	if _, err := os.Stat(directory); err != nil {
