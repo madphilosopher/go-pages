@@ -16,3 +16,9 @@ strip: go-pages
 
 run:
 	./go-pages
+
+README.html: README.md
+	pandoc -o README.html README.md
+
+clean:
+	rm -f go-pages README.html
