@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<title>{{.Title}}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="github.com/madphilosopher/go-pages" />
 
 	<link href="{{ .Basepath }}/static/css/hljs/zenburn.css" rel="stylesheet">
 	<link href="{{ .Basepath }}/static/css/bootstrap.min.css" rel="stylesheet">

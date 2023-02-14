@@ -10,10 +10,12 @@ The [madphilosopher fork](https://github.com/madphilosopher/go-pages) adds the f
 
 Available command line flags are:
 
-* `--address=:8080` *(in the format ip:port, empty ip binds to all IP addresses)*
-* `--dir=files` *(data directory has to be an initialized git repository!)*
-* `--title=CoolWiki` *(global wiki title)*
-* `--basepath=/wiki/` *(base path for reverse proxy web applications)*
+* `--address="localhost:8000"` *(in the format ip:port, empty ip binds to all IP addresses)*
+* `--basepath="/wiki/"` *(base path for reverse proxy web applications)*
+* `--directory="files"` *(data directory has to be an initialized git repository!)*
+* `--static="static"` *(directory where static assets are stored)*
+* `--templates="templates"` *(directory where templates are stored)*
+* `--title="Cool Wiki"` *(global wiki title)*
 
 ## Extensions
 
