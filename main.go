@@ -15,7 +15,7 @@ import (
 const RevisionLogLimit = 5
 
 var (
-	// default values, can be overriden by flags
+	// default values, can be overridden by flags
 	directory = "files"
 	templates = "templates"
 	static    = "static"
@@ -30,11 +30,11 @@ func main() {
 	flagTemplates := flag.String("templates", templates, "directory where the templates are stored")
 	flagStatic := flag.String("static", static, "directory where the static files are stored")
 	flagAddress := flag.String("address", address, "address for the webserver to bind to, example: 0.0.0.0:8000")
-	flagTitle := flag.String("title", title, "title to display")
+	flagTitle := flag.String("title", title, "global wiki title")
 	flagBasepath := flag.String("basepath", basepath, "base path, for web application proxy pass")
 	flag.Parse()
 
-	// Update global variables to possibly overriden ones
+	// Update global variables to possibly overridden ones
 	directory = *flagDirectory
 	templates = *flagTemplates
 	static = *flagStatic
@@ -52,7 +52,7 @@ func main() {
 		log.Fatalf("Error loading templates from %s: %v", templates, err)
 	}
 
-	// Static files (js, css, etc)
+	// Static files (js, css, etc.)
 	fileServer := http.FileServer(http.Dir(static))
 	http.Handle("/static/", http.StripPrefix("/static/", fileServer))
 

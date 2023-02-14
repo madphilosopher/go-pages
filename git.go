@@ -101,7 +101,7 @@ func listDirectories(path string) []*Directory {
 
 // GitRevert soft resets to the node's specific revision.
 func (node *Node) GitRevert() *Node {
-	log.Printf("Reverts %v to revision %s", node, node.Revision)
+	log.Printf("Revert %v to revision %s", node, node.Revision)
 	gitCmd(exec.Command("git", "checkout", node.Revision, "--", node.File))
 	return node
 }

@@ -151,7 +151,7 @@ func wikiHandler(w http.ResponseWriter, r *http.Request) {
 		bytes := []byte(content)
 		err := writeFile(bytes, filePath)
 		if err != nil {
-			log.Printf("Cant write to file %q, error: %v", filePath, err)
+			log.Printf("Could not write to file %q, error: %v", filePath, err)
 		} else {
 			// Wrote file, commit
 			node.Bytes = bytes
@@ -234,7 +234,7 @@ func renderTemplate(w http.ResponseWriter, node *Node) {
 		// Footer
 		tpl += "{{ template \"footer\" . }}"
 		if t, err = t.Parse(tpl); err != nil {
-			log.Fatalf("Couldn't parse template %q: %v", tpl, err)
+			log.Fatalf("Could not parse template %q: %v", tpl, err)
 		}
 		// Execute
 		err = t.Execute(w, node)
@@ -242,7 +242,7 @@ func renderTemplate(w http.ResponseWriter, node *Node) {
 		err = t.ExecuteTemplate(w, node.Template, node)
 	}
 	if err != nil {
-		log.Fatal("Could not execute template: ", err)
+		log.Fatal("Could not execute template:", err)
 	}
 
 }
